@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Video Portal for Children with Autism</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #ff6b6b;
+            text-align: center;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #4ecdc4;
+            border-bottom: 2px dashed #4ecdc4;
+            padding-bottom: 10px;
+        }
+        .language-toggle {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #ffeaa7;
+            color: #2d3436;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            font-size: 1em;
+        }
+        button:hover {
+            background-color: #fdcb6e;
+            transform: scale(1.05);
+        }
+        .thematic-block {
+            margin-bottom: 30px;
+            background-color: #e6f3ff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .video-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .video-item {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .video-item:hover {
+            transform: scale(1.05);
+        }
+        .video-item img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        .video-item a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #dfe6e9;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="language-toggle">
+            <button onclick="toggleLanguage()">
+                <span id="langButton">Cambiar a Español</span>
+            </button>
+        </div>
+        <h1 id="mainTitle">Educational Video Portal for Children with Autism</h1>
+        <div id="thematicBlocks"></div>
+        <footer>
+            <p>Inés Aray P.h.D - Substitute Teacher, Norton Ranch Elementary</p>
+        </footer>
+    </div>
+
+    <script>
+        const thematicBlocks = [
+            {
+                title: "Language Fundamentals",
+                titleES: "Fundamentos del Lenguaje",
+                videos: [
+                    { title: "ABC Song", titleES: "Canción del ABC", url: "https://www.youtube.com/watch?v=3Qm8-FyXK6c" },
+                    { title: "Spanish Alphabet Song", titleES: "Canción del Alfabeto en Español", url: "https://www.youtube.com/watch?v=3Qm8-FyXK6c" },
+                    { title: "Basic Vocabulary in English", titleES: "Vocabulario Básico en Inglés", url: "https://www.youtube.com/watch?v=QSaGOguxnvQ" },
+                    { title: "Basics of Language Arts", titleES: "Fundamentos de las Artes del Lenguaje", url: "https://www.youtube.com/watch?v=77YLb4C-69k" },
+                    { title: "Happy Learning Español", titleES: "Aprendizaje Feliz en Español", url: "https://www.youtube.com/channel/UCGkVdu_EVrqqxQ7OnLFK8RQ" },
+                    { title: "Language Arts Learning Videos", titleES: "Videos de Aprendizaje de Artes del Lenguaje", url: "https://www.youtube.com/watch?v=xOaMIwak7Ms" }
+                ]
+            },
+            {
+                title: "Time Concepts",
+                titleES: "Conceptos de Tiempo",
+                videos: [
+                    { title: "Days of the Week Song", titleES: "Canción de los Días de la Semana", url: "https://www.youtube.com/watch?v=K2iT6VeEyIE" },
+                    { title: "Months in Spanish", titleES: "Meses en Español", url: "https://www.youtube.com/watch?v=K2iT6VeEyIE" },
+                    { title: "Learning the Clock", titleES: "Aprendiendo el Reloj", url: "https://www.youtube.com/watch?v=HrxZWNu72WI" },
+                    { title: "What is Time?", titleES: "¿Qué es el Tiempo?", url: "https://www.youtube.com/watch?v=Nnsz4YOaFlw" }
+                ]
+            },
+            {
+                title: "Visual and Spatial Skills",
+                titleES: "Habilidades Visuales y Espaciales",
+                videos: [
+                    { title: "Colors and Shapes", titleES: "Colores y Formas", url: "https://www.youtube.com/watch?v=EHnQtlAfZVg" },
+                    { title: "Teach Kids Shapes & Colors", titleES: "Enseña a los Niños Formas y Colores", url: "https://www.youtube.com/watch?v=isZyxGl9SuM" }
+                ]
+            },
+            {
+                title: "Nature and Environment",
+                titleES: "Naturaleza y Medio Ambiente",
+                videos: [
+                    { title: "Weather Song for Kids", titleES: "Canción del Clima para Niños", url: "https://www.youtube.com/watch?v=Wf5A-ZcI0hg" },
+                    { title: "Seasons in Spanish", titleES: "Estaciones en Español", url: "https://www.youtube.com/watch?v=bR7BGPMDEos" },
+                    { title: "Natural and Built Environments", titleES: "Entornos Naturales y Construidos", url: "https://www.youtube.com/watch?v=rZVQjQWuoGE" },
+                    { title: "How to Care for the Environment", titleES: "Cómo Cuidar el Medio Ambiente", url: "https://www.youtube.com/watch?v=Gpc1s9qSeVM" }
+                ]
+            },
+            {
+                title: "Body Awareness",
+                titleES: "Conciencia Corporal",
+                videos: [
+                    { title: "Head, Shoulders, Knees, and Toes", titleES: "Cabeza, Hombros, Rodillas y Pies", url: "https://www.youtube.com/watch?v=9LT9ltzFJTQ" },
+                    { title: "Mr. Bones Body Awareness", titleES: "Sr. Huesos - Conciencia Corporal", url: "https://www.youtube.com/watch?v=BccyyePMqsM" },
+                    { title: "Human Body Parts for Kids", titleES: "Partes del Cuerpo Humano para Niños", url: "https://www.youtube.com/watch?v=ppUnmAvLhwE" }
+                ]
+            }
+        ];
+
+        let isEnglish = true;
+
+        function createThematicBlocks() {
+            const blocksContainer = document.getElementById('thematicBlocks');
+            blocksContainer.innerHTML = '';
+            thematicBlocks.forEach((block, index) => {
+                const blockElement = document.createElement('div');
+                blockElement.className = 'thematic-block';
+                blockElement.innerHTML = `
+                    <h2>${isEnglish ? block.title : block.titleES} (${index + 1})</h2>
+                    <div class="video-list">
+                        ${block.videos.map(video => `
+                            <div class="video-item">
+                                <img src="https://img.youtube.com/vi/${getYouTubeID(video.url)}/0.jpg" alt="${isEnglish ? video.title : video.titleES}">
+                                <a href="${video.url}" target="_blank" rel="noopener noreferrer">${isEnglish ? video.title : video.titleES}</a>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                blocksContainer.appendChild(blockElement);
+            });
+        }
+
+        function getYouTubeID(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[2].length === 11) ? match[2] : null;
+        }
+
+        function toggleLanguage() {
+            isEnglish = !isEnglish;
+            document.getElementById('langButton').textContent = isEnglish ? 'Cambiar a Español' : 'Switch to English';
+            document.getElementById('mainTitle').textContent = isEnglish ? 'Educational Video Portal for Children with Autism' : 'Portal de Videos Educativos para Niños con Autismo';
+            createThematicBlocks();
+        }
+
+        createThematicBlocks();
+    </script>
+</body>
+</html>
